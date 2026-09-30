@@ -1,0 +1,4405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#123c2b" />
+  <meta name="description" content="Abellilo Jewelry — timeless jewelry designed to make every moment unforgettable." />
+
+  <title>Abellilo Jewelry | Timeless Pieces, Beautifully Yours</title>
+
+  <style>
+    /* =========================================================
+       ABELLILO JEWELRY
+       Single-file HTML / CSS / JavaScript
+       ========================================================= */
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+      --green-950: #08251a;
+      --green-900: #0d3022;
+      --green-800: #123c2b;
+      --green-700: #1b5139;
+      --green-600: #28694b;
+      --green-500: #4f8a69;
+      --green-100: #e8f0eb;
+      --green-50: #f4f8f5;
+
+      --cream: #f7f3e9;
+      --cream-dark: #eee7d7;
+      --white: #ffffff;
+      --black: #111713;
+      --muted: #68746d;
+      --border: rgba(18, 60, 43, 0.13);
+
+      --gold: #b79657;
+      --gold-light: #d5bc82;
+
+      --shadow-sm: 0 8px 30px rgba(8, 37, 26, 0.07);
+      --shadow-md: 0 20px 60px rgba(8, 37, 26, 0.12);
+      --shadow-lg: 0 30px 90px rgba(8, 37, 26, 0.18);
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 30px;
+
+      --container: 1240px;
+      --nav-height: 82px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--black);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
+
+    .serif {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    /* =========================================================
+       UTILITIES
+       ========================================================= */
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-600);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: .95;
+      font-weight: 500;
+      color: var(--green-900);
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 470px;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .button {
+      min-height: 48px;
+      padding: 0 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      transition: .25s ease;
+      border-radius: 100px;
+    }
+
+    .button-primary {
+      background: var(--green-800);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--green-950);
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      color: var(--green-800);
+      border: 1px solid rgba(18, 60, 43, .25);
+      background: transparent;
+    }
+
+    .button-outline:hover {
+      background: var(--green-800);
+      color: white;
+      border-color: var(--green-800);
+    }
+
+    .button-light {
+      background: white;
+      color: var(--green-900);
+    }
+
+    .button-light:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--green-800);
+    }
+
+    .link-arrow span {
+      transition: transform .2s ease;
+    }
+
+    .link-arrow:hover span {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       ANNOUNCEMENT BAR
+       ========================================================= */
+
+    .announcement {
+      min-height: 34px;
+      background: var(--green-950);
+      color: rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7px 20px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    .navbar {
+      height: var(--nav-height);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-900);
+      font-size: 23px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: .8;
+      min-width: 150px;
+    }
+
+    .logo-main {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      font-weight: 700;
+      color: var(--green-900);
+      letter-spacing: -.5px;
+    }
+
+    .logo-sub {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 7px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--green-900);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: transparent;
+      color: var(--green-900);
+      font-size: 20px;
+      border-radius: 50%;
+      transition: .2s;
+    }
+
+    .nav-icon:hover {
+      background: var(--green-50);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 18px;
+      height: 18px;
+      background: var(--gold);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      background:
+        radial-gradient(circle at 80% 25%, rgba(183,150,87,.12), transparent 25%),
+        linear-gradient(135deg, var(--green-50), white 60%);
+      min-height: calc(100vh - var(--nav-height) - 34px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(183,150,87,.2);
+      border-radius: 50%;
+      right: -170px;
+      top: -120px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      align-items: center;
+      gap: 70px;
+      padding: 70px 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px, 8vw, 110px);
+      font-weight: 500;
+      line-height: .78;
+      color: var(--green-900);
+      letter-spacing: -3px;
+      margin-bottom: 30px;
+    }
+
+    .hero-title em {
+      display: block;
+      color: var(--gold);
+      font-style: italic;
+      margin-left: 50px;
+    }
+
+    .hero-description {
+      max-width: 440px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-circle {
+      position: absolute;
+      width: min(550px, 90%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--green-800);
+    }
+
+    .hero-image {
+      width: min(500px, 85%);
+      height: 570px;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 30px 25px rgba(0,0,0,.17));
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 0;
+      bottom: 55px;
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid rgba(183,150,87,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 3;
+      padding: 20px;
+      color: var(--green-900);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+      line-height: 1.05;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 25px;
+      left: 40px;
+      writing-mode: vertical-rl;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       CATEGORIES
+       ========================================================= */
+
+    .categories {
+      background: white;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      height: 320px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--green-100);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent 35%, rgba(8,37,26,.78));
+    }
+
+    .category-info {
+      position: absolute;
+      z-index: 2;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      color: white;
+    }
+
+    .category-info h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .category-info p {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: .8;
+    }
+
+    /* =========================================================
+       PRODUCT GRID
+       ========================================================= */
+
+    .products-section {
+      background: var(--cream);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      position: relative;
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-image-wrap {
+      height: 360px;
+      position: relative;
+      background: #f4f4ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 18px;
+      transition: transform .5s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.04);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2;
+      background: var(--green-800);
+      color: white;
+      padding: 7px 10px;
+      border-radius: 100px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .product-wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: var(--green-800);
+      transition: background 0.2s;
+    }
+
+    .product-wishlist:hover {
+      background: white;
+    }
+
+    .product-info {
+      padding: 20px 20px 22px;
+    }
+
+    .product-category {
+      font-size: 9px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+      font-weight: 600;
+      color: var(--green-900);
+      margin-bottom: 9px;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .product-price {
+      color: var(--green-900);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .add-small {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--green-800);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      transition: .2s;
+    }
+
+    .add-small:hover {
+      background: var(--gold);
+      transform: rotate(90deg);
+    }
+
+    .product-grid .product-card:nth-child(5),
+    .product-grid .product-card:nth-child(6) {
+      grid-column: span 1;
+    }
+
+    /* =========================================================
+       EDITORIAL / BRAND STORY
+       ========================================================= */
+
+    .editorial {
+      background: var(--green-900);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .editorial::before {
+      content: "ABELLILO";
+      position: absolute;
+      right: -80px;
+      bottom: -60px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 200px;
+      color: rgba(255,255,255,.025);
+      white-space: nowrap;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .editorial-images {
+      display: grid;
+      grid-template-columns: 1fr .75fr;
+      gap: 15px;
+      align-items: end;
+    }
+
+    .editorial-images img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+
+    .editorial-images img:last-child {
+      height: 350px;
+    }
+
+    .editorial-content .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .editorial-content .section-title {
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    .editorial-content p {
+      color: rgba(255,255,255,.68);
+      line-height: 1.9;
+      font-size: 14px;
+      margin-bottom: 25px;
+      max-width: 480px;
+    }
+
+    /* =========================================================
+       FEATURE STRIP
+       ========================================================= */
+
+    .feature-strip {
+      background: var(--cream);
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+    }
+
+    .feature-items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 25px;
+      border-right: 1px solid var(--border);
+    }
+
+    .feature-item:last-child {
+      border-right: 0;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(183,150,87,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .feature-item h4 {
+      color: var(--green-900);
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .feature-item p {
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       LOOKBOOK
+       ========================================================= */
+
+    .lookbook {
+      background: white;
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .9fr;
+      grid-template-rows: 270px 270px;
+      gap: 15px;
+    }
+
+    .lookbook-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--green-100);
+    }
+
+    .lookbook-item:first-child {
+      grid-row: span 2;
+    }
+
+    .lookbook-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .lookbook-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .lookbook-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 25px;
+      background: linear-gradient(transparent 40%, rgba(8,37,26,.7));
+      color: white;
+    }
+
+    .lookbook-overlay h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       REVIEWS
+       ========================================================= */
+
+    .reviews {
+      background: var(--green-50);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 4px;
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+
+    .review-text {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--green-900);
+      font-size: 25px;
+      line-height: 1.25;
+      margin-bottom: 25px;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 38px;
+      height: 38px;
+      background: var(--green-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-800);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+    }
+
+    .review-author strong {
+      display: block;
+      font-size: 11px;
+      color: var(--green-900);
+    }
+
+    .review-author span {
+      display: block;
+      font-size: 9px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* =========================================================
+       GIFTING
+       ========================================================= */
+
+    .gifting {
+      background: var(--cream);
+    }
+
+    .gifting-box {
+      background: var(--green-800);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 490px;
+    }
+
+    .gifting-image {
+      min-height: 490px;
+      background: var(--green-700);
+    }
+
+    .gifting-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 25px;
+    }
+
+    .gifting-content {
+      padding: 65px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+    }
+
+    .gifting-content .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .gifting-content h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(44px, 5vw, 68px);
+      font-weight: 500;
+      line-height: .9;
+      margin-bottom: 25px;
+    }
+
+    .gifting-content p {
+      color: rgba(255,255,255,.68);
+      line-height: 1.8;
+      font-size: 14px;
+      max-width: 420px;
+      margin-bottom: 28px;
+    }
+
+    .gift-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 30px;
+    }
+
+    .gift-point {
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 100px;
+      padding: 8px 12px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,.75);
+    }
+
+    /* =========================================================
+       NEWSLETTER
+       ========================================================= */
+
+    .newsletter {
+      background: white;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .newsletter-inner {
+      max-width: 680px;
+      margin: auto;
+    }
+
+    .newsletter .section-title {
+      margin-bottom: 15px;
+    }
+
+    .newsletter-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 540px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--green-800);
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      height: 55px;
+      border: 0;
+      outline: 0;
+      padding: 0 5px;
+      font-size: 13px;
+      color: var(--black);
+      background: transparent;
+    }
+
+    .newsletter-form button {
+      background: transparent;
+      color: var(--green-800);
+      padding: 0 5px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      background: var(--green-950);
+      color: white;
+      padding: 75px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 55px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-logo {
+      align-items: flex-start;
+    }
+
+    .footer-logo .logo-main {
+      color: white;
+    }
+
+    .footer-description {
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      line-height: 1.8;
+      max-width: 290px;
+      margin: 20px 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: rgba(255,255,255,.75);
+      transition: .2s;
+    }
+
+    .social-link:hover {
+      background: white;
+      color: var(--green-900);
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: var(--gold-light);
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+      margin-bottom: 12px;
+      transition: .2s;
+    }
+
+    .footer-col a:hover {
+      color: white;
+      transform: translateX(3px);
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,.35);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       SIDEBAR
+       ========================================================= */
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sidebar {
+      position: fixed;
+      z-index: 2100;
+      top: 0;
+      right: 0;
+      width: min(430px, 92vw);
+      height: 100vh;
+      background: white;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: -20px 0 60px rgba(0,0,0,.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      height: 80px;
+      flex: 0 0 80px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header h3 {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--green-900);
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .close-button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--green-50);
+      color: var(--green-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 25px;
+    }
+
+    .sidebar-empty {
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .empty-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--green-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--green-700);
+      margin-bottom: 15px;
+    }
+
+    .sidebar-empty h4 {
+      color: var(--green-900);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 27px;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-empty p {
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 78px 1fr auto;
+      gap: 14px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-item-image {
+      width: 78px;
+      height: 88px;
+      background: #f4f4ef;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .cart-item-info h4 {
+      color: var(--green-900);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-info p {
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 9px;
+    }
+
+    .cart-item-price {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-800);
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .qty-btn {
+      width: 25px;
+      height: 25px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 5px;
+      color: var(--green-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-number {
+      min-width: 24px;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .remove-item {
+      color: #a05252;
+      background: transparent;
+      font-size: 10px;
+      margin-top: 8px;
+    }
+
+    .cart-item-total {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-900);
+      white-space: nowrap;
+    }
+
+    .sidebar-footer {
+      flex: 0 0 auto;
+      border-top: 1px solid var(--border);
+      padding: 20px 25px 25px;
+      background: white;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .summary-row.total {
+      color: var(--green-900);
+      font-size: 16px;
+      font-weight: 700;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    .checkout-button {
+      width: 100%;
+      margin-top: 15px;
+      min-height: 54px;
+      border-radius: 100px;
+    }
+
+    /* =========================================================
+       PRODUCT MODAL
+       ========================================================= */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: rgba(0,0,0,.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .product-modal {
+      width: min(960px, 100%);
+      max-height: min(760px, 94vh);
+      overflow-y: auto;
+      background: white;
+      border-radius: 25px;
+      position: relative;
+      transform: translateY(20px) scale(.98);
+      transition: .3s;
+    }
+
+    .modal-overlay.active .product-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      z-index: 5;
+      top: 15px;
+      right: 15px;
+      width: 42px;
+      height: 42px;
+      background: white;
+      box-shadow: var(--shadow-sm);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-900);
+      font-size: 20px;
+    }
+
+    .product-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-product-image {
+      min-height: 620px;
+      background: #f3f3ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px 0 0 25px;
+    }
+
+    .modal-product-image img {
+      width: 100%;
+      height: 620px;
+      object-fit: contain;
+      padding: 35px;
+    }
+
+    .modal-product-info {
+      padding: 55px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-category {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .modal-product-name {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--green-900);
+      font-size: 48px;
+      line-height: .95;
+      font-weight: 500;
+      margin-bottom: 13px;
+    }
+
+    .modal-price {
+      color: var(--green-800);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .modal-description {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .option-label {
+      display: block;
+      color: var(--green-900);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .size-option {
+      min-width: 54px;
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--green-900);
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .size-option.selected {
+      border-color: var(--green-800);
+      background: var(--green-800);
+      color: white;
+    }
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .quantity-control button {
+      width: 40px;
+      height: 42px;
+      background: white;
+      color: var(--green-900);
+    }
+
+    .quantity-control span {
+      width: 40px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .modal-add-button {
+      width: 100%;
+      min-height: 54px;
+    }
+
+    /* =========================================================
+       CHECKOUT MODAL
+       ========================================================= */
+
+    .checkout-modal {
+      width: min(1000px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 25px;
+      position: relative;
+      padding: 40px;
+      transform: translateY(20px);
+      transition: .3s;
+    }
+
+    .modal-overlay.active .checkout-modal {
+      transform: translateY(0);
+    }
+
+    .checkout-header {
+      padding-right: 50px;
+      margin-bottom: 30px;
+    }
+
+    .checkout-header .eyebrow {
+      margin-bottom: 7px;
+    }
+
+    .checkout-header h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--green-900);
+      font-weight: 500;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 35px;
+    }
+
+    .checkout-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--green-900);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      outline: none;
+      border-radius: 9px;
+      min-height: 48px;
+      padding: 12px 14px;
+      color: var(--black);
+      background: var(--green-50);
+      font-size: 12px;
+      transition: .2s;
+    }
+
+    .form-group textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-600);
+      background: white;
+    }
+
+    .order-summary {
+      background: var(--green-50);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .order-summary h3 {
+      color: var(--green-900);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .checkout-item {
+      display: grid;
+      grid-template-columns: 62px 1fr auto;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checkout-item-image {
+      width: 62px;
+      height: 68px;
+      background: white;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+
+    .checkout-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .checkout-item h4 {
+      color: var(--green-900);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+    }
+
+    .checkout-item p {
+      color: var(--muted);
+      font-size: 9px;
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .checkout-item-price {
+      color: var(--green-900);
+      font-size: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .checkout-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16px;
+      color: var(--green-900);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .place-order {
+      width: 100%;
+      min-height: 54px;
+      margin-top: 20px;
+      background: #25d366;
+      color: white;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: .2s;
+    }
+
+    .place-order:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+    }
+
+    .whatsapp-icon {
+      font-size: 17px;
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+      z-index: 5000;
+      bottom: 25px;
+      left: 50%;
+      transform: translate(-50%, 100px);
+      background: var(--green-950);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 100px;
+      font-size: 11px;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      transition: .35s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================================================
+       MOBILE SIDEBAR NAV
+       ========================================================= */
+
+    .mobile-menu {
+      position: fixed;
+      z-index: 2200;
+      top: 0;
+      left: 0;
+      width: min(330px, 84vw);
+      height: 100vh;
+      background: white;
+      transform: translateX(-100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: 20px 0 60px rgba(0,0,0,.12);
+      padding: 25px;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 45px;
+    }
+
+    .mobile-menu .logo {
+      align-items: flex-start;
+    }
+
+    .mobile-links a {
+      display: flex;
+      align-items: center;
+      min-height: 55px;
+      border-bottom: 1px solid var(--border);
+      color: var(--green-900);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero-inner {
+        gap: 35px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      :root {
+        --nav-height: 72px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .container {
+        width: min(calc(100% - 30px), var(--container));
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .logo {
+        min-width: 0;
+      }
+
+      .nav-inner {
+        gap: 5px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 60px 0 30px;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-title {
+        font-size: clamp(65px, 18vw, 100px);
+      }
+
+      .hero-title em {
+        margin-left: 0;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .hero-image {
+        height: 430px;
+      }
+
+      .hero-badge {
+        right: 5%;
+        bottom: 15px;
+        width: 105px;
+        height: 105px;
+        font-size: 15px;
+      }
+
+      .hero-scroll {
+        display: none;
+      }
+
+      .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 30px;
+      }
+
+      .feature-items {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .feature-item:nth-child(3),
+      .feature-item:nth-child(4) {
+        padding-top: 12px;
+      }
+
+      .editorial-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .gifting-box {
+        grid-template-columns: 1fr;
+      }
+
+      .gifting-image {
+        min-height: 350px;
+      }
+
+      .gifting-content {
+        padding: 50px 35px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lookbook-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px 230px;
+      }
+
+      .lookbook-item:first-child {
+        grid-row: auto;
+        grid-column: span 2;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .announcement {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding-top: 50px;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .hero-image {
+        height: 360px;
+      }
+
+      .hero-circle {
+        width: 330px;
+      }
+
+      .hero-badge {
+        width: 90px;
+        height: 90px;
+        font-size: 13px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .category-card {
+        height: 230px;
+      }
+
+      .category-info {
+        left: 15px;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .category-info h3 {
+        font-size: 24px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .product-image-wrap {
+        height: 220px;
+      }
+
+      .product-info {
+        padding: 14px;
+      }
+
+      .product-name {
+        font-size: 21px;
+      }
+
+      .product-price {
+        font-size: 11px;
+      }
+
+      .add-small {
+        width: 34px;
+        height: 34px;
+      }
+
+      .product-tag {
+        top: 8px;
+        left: 8px;
+        padding: 5px 7px;
+        font-size: 7px;
+      }
+
+      .product-wishlist {
+        width: 32px;
+        height: 32px;
+        top: 7px;
+        right: 7px;
+      }
+
+      .editorial-images {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .editorial-images img {
+        height: 320px;
+      }
+
+      .editorial-images img:last-child {
+        height: 230px;
+      }
+
+      .feature-items {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-item,
+      .feature-item:nth-child(2),
+      .feature-item:nth-child(3),
+      .feature-item:nth-child(4) {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
+      }
+
+      .feature-item:last-child {
+        border-bottom: 0;
+      }
+
+      .lookbook-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px 200px;
+        gap: 10px;
+      }
+
+      .lookbook-item:first-child {
+        grid-column: span 2;
+      }
+
+      .lookbook-overlay {
+        padding: 15px;
+      }
+
+      .lookbook-overlay h3 {
+        font-size: 22px;
+      }
+
+      .review-card {
+        padding: 25px;
+      }
+
+      .gifting-image {
+        min-height: 280px;
+      }
+
+      .gifting-content {
+        padding: 40px 25px;
+      }
+
+      .newsletter {
+        padding: 75px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 20px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: span 2;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .product-modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-product-image {
+        min-height: 330px;
+        border-radius: 25px 25px 0 0;
+      }
+
+      .modal-product-image img {
+        height: 330px;
+      }
+
+      .modal-product-info {
+        padding: 30px 22px 25px;
+      }
+
+      .modal-product-name {
+        font-size: 40px;
+      }
+
+      .checkout-modal {
+        padding: 25px 18px;
+        border-radius: 18px;
+      }
+
+      .checkout-header h2 {
+        font-size: 40px;
+      }
+
+      .cart-item {
+        grid-template-columns: 65px 1fr auto;
+        gap: 10px;
+      }
+
+      .cart-item-image {
+        width: 65px;
+        height: 75px;
+      }
+
+      .sidebar {
+        width: min(400px, 88vw);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image-wrap {
+        height: 300px;
+      }
+
+      .category-card {
+        height: 200px;
+      }
+
+      .hero-title {
+        font-size: 63px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       ANNOUNCEMENT
+       ========================================================= -->
+
+  <div class="announcement">
+    Complimentary delivery on selected orders across Nigeria
+  </div>
+
+  <!-- =========================================================
+       NAVBAR
+       ========================================================= -->
+
+  <header class="navbar">
+    <div class="container nav-inner">
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+      >
+        ☰
+      </button>
+
+      <a href="#" class="logo" aria-label="Abellilo Jewelry">
+        <span class="logo-main">Abellilo</span>
+        <span class="logo-sub">Jewelry</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#new-arrivals">New Arrivals</a>
+        <a href="#categories">Collections</a>
+        <a href="#story">Our Story</a>
+        <a href="#bestsellers">Best Sellers</a>
+        <a href="#gifting">Gifting</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="nav-icon" id="cartButton" aria-label="Shopping bag">
+          👜
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MOBILE MENU
+       ========================================================= -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="#" class="logo">
+        <span class="logo-main">Abellilo</span>
+        <span class="logo-sub">Jewelry</span>
+      </a>
+
+      <button
+        class="close-button"
+        id="mobileMenuClose"
+        aria-label="Close menu"
+      >
+        ×
+      </button>
+    </div>
+
+    <nav class="mobile-links">
+      <a href="#new-arrivals">New Arrivals</a>
+      <a href="#categories">Collections</a>
+      <a href="#story">Our Story</a>
+      <a href="#bestsellers">Best Sellers</a>
+      <a href="#lookbook">Lookbook</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#gifting">Gifting</a>
+    </nav>
+
+  </div>
+
+  <!-- Overlay for sidebar and mobile menu -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">The Abellilo Edit</div>
+
+          <h1 class="hero-title">
+            Wear your
+            <em>moment.</em>
+          </h1>
+
+          <p class="hero-description">
+            Discover thoughtfully selected jewelry made for the woman
+            who believes the smallest details can make the biggest
+            impression.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#new-arrivals" class="button button-primary">
+              Shop Collection
+            </a>
+
+            <a href="#story" class="button button-outline">
+              Discover Abellilo
+            </a>
+          </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+          <div class="hero-circle"></div>
+
+          <img
+            src="003.webp"
+            alt="Abellilo jewelry collection"
+            class="hero-image"
+          />
+
+          <div class="hero-badge">
+            Made to<br />be remembered
+          </div>
+
+          <div class="hero-scroll">
+            Scroll to discover
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         FEATURED CATEGORIES
+         ======================================================= -->
+
+    <section class="section categories" id="categories">
+
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">Shop by category</div>
+            <h2 class="section-title">Find your signature.</h2>
+          </div>
+
+          <p class="section-description">
+            From everyday elegance to pieces designed for special
+            occasions, discover jewelry that becomes part of your story.
+          </p>
+        </div>
+
+        <div class="category-grid">
+
+          <a href="#new-arrivals" class="category-card">
+            <img src="001.webp" alt="Necklaces" />
+            <div class="category-info">
+              <h3>Necklaces</h3>
+              <p>Elegant layers</p>
+            </div>
+          </a>
+
+          <a href="#new-arrivals" class="category-card">
+            <img src="002.webp" alt="Earrings" />
+            <div class="category-info">
+              <h3>Earrings</h3>
+              <p>Everyday brilliance</p>
+            </div>
+          </a>
+
+          <a href="#new-arrivals" class="category-card">
+            <img src="003.webp" alt="Jewelry sets" />
+            <div class="category-info">
+              <h3>Sets</h3>
+              <p>Made to belong together</p>
+            </div>
+          </a>
+
+          <a href="#new-arrivals" class="category-card">
+            <img src="007.webp" alt="Statement jewelry" />
+            <div class="category-info">
+              <h3>Statement</h3>
+              <p>Make an entrance</p>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         FEATURE STRIP
+         ======================================================= -->
+
+    <section class="feature-strip">
+
+      <div class="container feature-items">
+
+        <div class="feature-item">
+          <div class="feature-icon">✦</div>
+          <div>
+            <h4>Curated Quality</h4>
+            <p>Pieces selected with attention to detail.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">◇</div>
+          <div>
+            <h4>Beautifully Packed</h4>
+            <p>Every order arrives ready to delight.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">♡</div>
+          <div>
+            <h4>Gift Worthy</h4>
+            <p>Thoughtful pieces for every occasion.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon">↗</div>
+          <div>
+            <h4>Easy Ordering</h4>
+            <p>Simple checkout directly through WhatsApp.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         NEW ARRIVALS
+         ======================================================= -->
+
+    <section class="section products-section" id="new-arrivals">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Freshly curated</div>
+            <h2 class="section-title">New arrivals.</h2>
+          </div>
+
+          <p class="section-description">
+            Pieces chosen to add a quiet touch of luxury to your
+            everyday wardrobe.
+          </p>
+
+        </div>
+
+        <div class="product-grid" id="newProducts"></div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         BRAND STORY
+         ======================================================= -->
+
+    <section class="section editorial" id="story">
+
+      <div class="container editorial-grid">
+
+        <div class="editorial-images">
+
+          <img src="004.webp" alt="Abellilo jewelry detail" />
+          <img src="006.webp" alt="Abellilo jewelry set" />
+
+        </div>
+
+        <div class="editorial-content">
+
+          <div class="eyebrow">The Abellilo story</div>
+
+          <h2 class="section-title">
+            Jewelry with<br />
+            a little soul.
+          </h2>
+
+          <p>
+            Abellilo Jewelry was created around a simple idea:
+            beautiful jewelry should feel personal. It should
+            complement your style, celebrate your milestones and
+            become something you reach for again and again.
+          </p>
+
+          <p>
+            Our collections blend timeless silhouettes with modern
+            details, giving you pieces that feel effortless today
+            and special for years to come.
+          </p>
+
+          <a href="#bestsellers" class="button button-light">
+            Explore the edit
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         BEST SELLERS
+         ======================================================= -->
+
+    <section class="section products-section" id="bestsellers">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Loved by our customers</div>
+            <h2 class="section-title">Best sellers.</h2>
+          </div>
+
+          <p class="section-description">
+            The pieces that keep finding their way into jewelry
+            boxes, gift bags and everyday outfits.
+          </p>
+
+        </div>
+
+        <div class="product-grid" id="bestProducts"></div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         JEWELRY FEATURE / VALUE PROPOSITION
+         ======================================================= -->
+
+    <section class="section editorial">
+
+      <div class="container">
+
+        <div style="text-align:center; max-width:700px; margin:0 auto 50px;">
+          <div class="eyebrow" style="justify-content:center;">
+            Why Abellilo
+          </div>
+
+          <h2 class="section-title">
+            The details make<br />the difference.
+          </h2>
+        </div>
+
+        <div class="feature-items">
+
+          <div class="feature-item" style="border-color:rgba(255,255,255,.12);">
+            <div class="feature-icon">✧</div>
+            <div>
+              <h4 style="color:white;">Timeless Design</h4>
+              <p style="color:rgba(255,255,255,.55);">
+                Styles made to move with you.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-item" style="border-color:rgba(255,255,255,.12);">
+            <div class="feature-icon">♡</div>
+            <div>
+              <h4 style="color:white;">Personal Expression</h4>
+              <p style="color:rgba(255,255,255,.55);">
+                Find pieces that feel like you.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-item" style="border-color:rgba(255,255,255,.12);">
+            <div class="feature-icon">◇</div>
+            <div>
+              <h4 style="color:white;">Gift Ready</h4>
+              <p style="color:rgba(255,255,255,.55);">
+                Beautiful moments start with beautiful details.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature-item" style="border-color:transparent;">
+            <div class="feature-icon">∞</div>
+            <div>
+              <h4 style="color:white;">Made for Moments</h4>
+              <p style="color:rgba(255,255,255,.55);">
+                From everyday memories to celebrations.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         LOOKBOOK
+         ======================================================= -->
+
+    <section class="section lookbook" id="lookbook">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Style inspiration</div>
+            <h2 class="section-title">The lookbook.</h2>
+          </div>
+
+          <p class="section-description">
+            A little inspiration for pairing your favorite Abellilo
+            pieces with your everyday style.
+          </p>
+
+        </div>
+
+        <div class="lookbook-grid">
+
+          <div class="lookbook-item">
+            <img src="003.webp" alt="Jewelry styling" />
+            <div class="lookbook-overlay">
+              <h3>Layer with intention.</h3>
+            </div>
+          </div>
+
+          <div class="lookbook-item">
+            <img src="005.webp" alt="Elegant earrings" />
+            <div class="lookbook-overlay">
+              <h3>Quiet elegance.</h3>
+            </div>
+          </div>
+
+          <div class="lookbook-item">
+            <img src="008.webp" alt="Statement earrings" />
+            <div class="lookbook-overlay">
+              <h3>Own the moment.</h3>
+            </div>
+          </div>
+
+          <div class="lookbook-item">
+            <img src="009.webp" alt="Jewelry detail" />
+            <div class="lookbook-overlay">
+              <h3>Little details.</h3>
+            </div>
+          </div>
+
+          <div class="lookbook-item">
+            <img src="001.webp" alt="Necklace styling" />
+            <div class="lookbook-overlay">
+              <h3>Your signature.</h3>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         REVIEWS
+         ======================================================= -->
+
+    <section class="section reviews" id="reviews">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+            <div class="eyebrow">Kind words</div>
+            <h2 class="section-title">They said it best.</h2>
+          </div>
+
+          <p class="section-description">
+            What makes a piece special is how it makes you feel.
+          </p>
+
+        </div>
+
+        <div class="review-grid">
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+
+            <p class="review-text">
+              “The necklace looked even more beautiful in person.
+              It instantly became my favorite piece.”
+            </p>
+
+            <div class="review-author">
+              <div class="review-avatar">A</div>
+              <div>
+                <strong>Amara</strong>
+                <span>Verified customer</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+
+            <p class="review-text">
+              “I bought the set as a gift and the packaging made
+              the whole experience feel so special.”
+            </p>
+
+            <div class="review-author">
+              <div class="review-avatar">D</div>
+              <div>
+                <strong>Daniel</strong>
+                <span>Verified customer</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+
+            <p class="review-text">
+              “Beautiful, simple and elegant. I have already
+              picked out my next Abellilo piece.”
+            </p>
+
+            <div class="review-author">
+              <div class="review-avatar">T</div>
+              <div>
+                <strong>Tomi</strong>
+                <span>Verified customer</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         GIFTING
+         ======================================================= -->
+
+    <section class="section gifting" id="gifting">
+
+      <div class="container">
+
+        <div class="gifting-box">
+
+          <div class="gifting-image">
+            <img src="006.webp" alt="Abellilo gift set" />
+          </div>
+
+          <div class="gifting-content">
+
+            <div class="eyebrow">For someone special</div>
+
+            <h2>
+              Give them<br />
+              something<br />
+              unforgettable.
+            </h2>
+
+            <p>
+              Whether it is a birthday, anniversary, celebration or
+              simply “I saw this and thought of you,” Abellilo pieces
+              make beautiful gifts.
+            </p>
+
+            <div class="gift-points">
+              <span class="gift-point">Gift worthy</span>
+              <span class="gift-point">Elegant packaging</span>
+              <span class="gift-point">Made for memories</span>
+            </div>
+
+            <a href="#new-arrivals" class="button button-light">
+              Shop gifts
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =======================================================
+         NEWSLETTER
+         ========================================================= -->
+
+    <section class="newsletter">
+
+      <div class="container newsletter-inner">
+
+        <div class="eyebrow" style="justify-content:center;">
+          Stay in the know
+        </div>
+
+        <h2 class="section-title">
+          A little beauty,<br />delivered.
+        </h2>
+
+        <p class="newsletter-description">
+          Join the Abellilo list for new collection updates,
+          styling inspiration and special offers.
+        </p>
+
+        <form class="newsletter-form" id="newsletterForm">
+
+          <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Your email address"
+            required
+          />
+
+          <button type="submit">
+            Subscribe →
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <a href="#" class="logo footer-logo">
+            <span class="logo-main">Abellilo</span>
+            <span class="logo-sub">Jewelry</span>
+          </a>
+
+          <p class="footer-description">
+            Timeless jewelry for beautiful moments. Curated with
+            intention, styled by you.
+          </p>
+
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">ig</a>
+            <a href="#" class="social-link" aria-label="Facebook">fb</a>
+            <a href="#" class="social-link" aria-label="TikTok">tk</a>
+            <a href="#" class="social-link" aria-label="WhatsApp">wa</a>
+          </div>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Shop</h4>
+
+          <a href="#new-arrivals">New Arrivals</a>
+          <a href="#bestsellers">Best Sellers</a>
+          <a href="#categories">Necklaces</a>
+          <a href="#categories">Earrings</a>
+          <a href="#categories">Sets</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Abellilo</h4>
+
+          <a href="#story">Our Story</a>
+          <a href="#lookbook">Lookbook</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#gifting">Gifting</a>
+          <a href="#">Contact</a>
+
+        </div>
+
+        <div class="footer-col">
+
+          <h4>Help</h4>
+
+          <a href="#">Delivery Information</a>
+          <a href="#">Returns</a>
+          <a href="#">Care Guide</a>
+          <a href="#">FAQs</a>
+          <a href="#">WhatsApp Us</a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span>© 2026 Abellilo Jewelry. All rights reserved.</span>
+
+        <span>
+          Designed for timeless moments.
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================================
+       CART SIDEBAR
+       ========================================================= -->
+
+  <aside class="sidebar" id="cartSidebar">
+
+    <div class="sidebar-header">
+
+      <h3>Your Bag</h3>
+
+      <button
+        class="close-button"
+        id="cartClose"
+        aria-label="Close cart"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="sidebar-content" id="cartContent">
+      <!-- Javascript fills this -->
+    </div>
+
+    <div class="sidebar-footer" id="cartFooter">
+      <!-- Javascript fills this -->
+    </div>
+
+  </aside>
+
+  <!-- =========================================================
+       PRODUCT MODAL
+       ========================================================= -->
+
+  <div class="modal-overlay" id="productModalOverlay">
+
+    <div class="product-modal">
+
+      <button
+        class="modal-close"
+        id="productModalClose"
+        aria-label="Close product"
+      >
+        ×
+      </button>
+
+      <div class="product-modal-grid">
+
+        <div class="modal-product-image">
+          <img id="modalProductImage" src="" alt="" />
+        </div>
+
+        <div class="modal-product-info">
+
+          <div class="modal-category" id="modalProductCategory"></div>
+
+          <h2 class="modal-product-name" id="modalProductName"></h2>
+
+          <div class="modal-price" id="modalProductPrice"></div>
+
+          <p class="modal-description" id="modalProductDescription"></p>
+
+          <label class="option-label">
+            Select size
+          </label>
+
+          <div class="size-options" id="sizeOptions"></div>
+
+          <div class="quantity-row">
+
+            <span class="option-label" style="margin:0;">
+              Quantity
+            </span>
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                id="modalQtyMinus"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+
+              <span id="modalQty">1</span>
+
+              <button
+                type="button"
+                id="modalQtyPlus"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <button
+            class="button button-primary modal-add-button"
+            id="modalAddButton"
+          >
+            Add to bag
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       CHECKOUT MODAL
+       ========================================================= -->
+
+  <div class="modal-overlay" id="checkoutModalOverlay">
+
+    <div class="checkout-modal">
+
+      <button
+        class="modal-close"
+        id="checkoutModalClose"
+        aria-label="Close checkout"
+      >
+        ×
+      </button>
+
+      <div class="checkout-header">
+
+        <div class="eyebrow">Almost yours</div>
+
+        <h2>Complete your order.</h2>
+
+      </div>
+
+      <div class="checkout-grid">
+
+        <form class="checkout-form" id="checkoutForm">
+
+          <div class="form-group">
+
+            <label for="customerName">
+              Full name *
+            </label>
+
+            <input
+              type="text"
+              id="customerName"
+              name="customerName"
+              placeholder="Enter your full name"
+              required
+            />
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerPhone">
+              Phone number *
+            </label>
+
+            <input
+              type="tel"
+              id="customerPhone"
+              name="customerPhone"
+              placeholder="08012345678"
+              required
+            />
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerEmail">
+              Email address
+            </label>
+
+            <input
+              type="email"
+              id="customerEmail"
+              name="customerEmail"
+              placeholder="you@example.com"
+            />
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerAddress">
+              Delivery address *
+            </label>
+
+            <textarea
+              id="customerAddress"
+              name="customerAddress"
+              placeholder="House number, street, area..."
+              required
+            ></textarea>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerCity">
+              City *
+            </label>
+
+            <input
+              type="text"
+              id="customerCity"
+              name="customerCity"
+              placeholder="Lagos"
+              required
+            />
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerState">
+              State *
+            </label>
+
+            <select
+              id="customerState"
+              name="customerState"
+              required
+            >
+
+              <option value="">Select state</option>
+              <option>Abia</option>
+              <option>Adamawa</option>
+              <option>Akwa Ibom</option>
+              <option>Anambra</option>
+              <option>Bauchi</option>
+              <option>Bayelsa</option>
+              <option>Benue</option>
+              <option>Borno</option>
+              <option>Cross River</option>
+              <option>Delta</option>
+              <option>Ebonyi</option>
+              <option>Edo</option>
+              <option>Ekiti</option>
+              <option>Enugu</option>
+              <option>FCT Abuja</option>
+              <option>Gombe</option>
+              <option>Imo</option>
+              <option>Jigawa</option>
+              <option>Kaduna</option>
+              <option>Kano</option>
+              <option>Katsina</option>
+              <option>Kebbi</option>
+              <option>Kogi</option>
+              <option>Kwara</option>
+              <option>Lagos</option>
+              <option>Nasarawa</option>
+              <option>Niger</option>
+              <option>Ogun</option>
+              <option>Ondo</option>
+              <option>Osun</option>
+              <option>Oyo</option>
+              <option>Plateau</option>
+              <option>Rivers</option>
+              <option>Sokoto</option>
+              <option>Taraba</option>
+              <option>Yobe</option>
+              <option>Zamfara</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customerNote">
+              Order note
+            </label>
+
+            <textarea
+              id="customerNote"
+              name="customerNote"
+              placeholder="Any special instructions?"
+            ></textarea>
+
+          </div>
+
+          <button
+            type="submit"
+            class="place-order"
+          >
+            <span class="whatsapp-icon">◉</span>
+            Place Order on WhatsApp
+          </button>
+
+        </form>
+
+        <div class="order-summary">
+
+          <h3>Your order</h3>
+
+          <div id="checkoutItems">
+            <!-- Javascript fills this -->
+          </div>
+
+          <div class="checkout-total">
+            <span>Total</span>
+            <span id="checkoutTotal">₦0</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       TOAST
+       ========================================================= -->
+
+  <div class="toast" id="toast"></div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       PRODUCT DATA
+       ========================================================= */
+
+    const products = [
+
+      {
+        id: "001",
+        image: "001.webp",
+        name: "Amara Grace Necklace",
+        category: "Necklaces",
+        type: "necklace",
+        price: 25000,
+        tag: "New",
+        sizes: ["One Size"],
+        description:
+          "A graceful necklace with a refined silhouette designed to add an effortless finishing touch to any look."
+      },
+
+      {
+        id: "002",
+        image: "002.webp",
+        name: "Lumière Drop Earrings",
+        category: "Earrings",
+        type: "earrings",
+        price: 18000,
+        tag: "New",
+        sizes: ["One Size"],
+        description:
+          "Elegant earrings designed to catch the light beautifully while keeping your look sophisticated and effortless."
+      },
+
+      {
+        id: "003",
+        image: "003.webp",
+        name: "Serenity Signature Set",
+        category: "Jewelry Sets",
+        type: "set",
+        price: 42000,
+        tag: "Bestseller",
+        sizes: ["One Size"],
+        description:
+          "A beautifully coordinated necklace and earring combination created for effortless elegance."
+      },
+
+      {
+        id: "004",
+        image: "004.webp",
+        name: "Eden Pearl Necklace",
+        category: "Necklaces",
+        type: "necklace",
+        price: 28000,
+        tag: "New",
+        sizes: ["One Size"],
+        description:
+          "A timeless necklace inspired by understated luxury and designed to complement both simple and elevated looks."
+      },
+
+      {
+        id: "005",
+        image: "005.webp",
+        name: "Aurelia Studs",
+        category: "Earrings",
+        type: "earrings",
+        price: 16000,
+        tag: "Popular",
+        sizes: ["One Size"],
+        description:
+          "Minimal yet striking earrings made for the days when subtle elegance says everything."
+      },
+
+      {
+        id: "006",
+        image: "006.webp",
+        name: "Celeste Harmony Set",
+        category: "Jewelry Sets",
+        type: "set",
+        price: 45000,
+        tag: "Bestseller",
+        sizes: ["One Size"],
+        description:
+          "A matching jewelry set designed to bring harmony to your look, from special occasions to memorable evenings."
+      },
+
+      {
+        id: "007",
+        image: "007.webp",
+        name: "Elara Statement Earrings",
+        category: "Earrings",
+        type: "earrings",
+        price: 22000,
+        tag: "New",
+        sizes: ["One Size"],
+        description:
+          "A confident pair of statement earrings created for moments when you want your jewelry to do the talking."
+      },
+
+      {
+        id: "008",
+        image: "008.webp",
+        name: "Zara Bloom Earrings",
+        category: "Earrings",
+        type: "earrings",
+        price: 19500,
+        tag: "Popular",
+        sizes: ["One Size"],
+        description:
+          "A delicate floral-inspired design that brings a feminine finishing touch to your everyday wardrobe."
+      },
+
+      {
+        id: "009",
+        image: "009.webp",
+        name: "Mira Luxe Earrings",
+        category: "Earrings",
+        type: "earrings",
+        price: 21000,
+        tag: "Popular",
+        sizes: ["One Size"],
+        description:
+          "A polished jewelry staple with an elegant shape designed to transition effortlessly from day to night."
+      }
+
+    ];
+
+
+    /* =========================================================
+       STATE
+       ========================================================= */
+
+    let cart = JSON.parse(localStorage.getItem("abelliloCart")) || [];
+    let wishlist = JSON.parse(localStorage.getItem("abelliloWishlist")) || [];
+
+    let selectedProduct = null;
+    let selectedSize = null;
+    let selectedQuantity = 1;
+
+
+    /* =========================================================
+       HELPERS
+       ========================================================= */
+
+    function formatNaira(amount) {
+
+      return new Intl.NumberFormat("en-NG", {
+        style: "currency",
+        currency: "NGN",
+        maximumFractionDigits: 0
+      }).format(amount);
+
+    }
+
+
+    function saveCart() {
+
+      localStorage.setItem(
+        "abelliloCart",
+        JSON.stringify(cart)
+      );
+
+    }
+
+
+    function saveWishlist() {
+
+      localStorage.setItem(
+        "abelliloWishlist",
+        JSON.stringify(wishlist)
+      );
+
+    }
+
+
+    function toggleWishlist(productId) {
+
+      if (!wishlist.includes(productId)) {
+        wishlist.push(productId);
+        showToast("Added to wishlist");
+      } else {
+        showToast("Already in your wishlist");
+      }
+
+      saveWishlist();
+
+    }
+
+
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(window.toastTimer);
+
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+
+    }
+
+
+    function getProduct(id) {
+
+      return products.find(product => product.id === id);
+
+    }
+
+
+    /* =========================================================
+       PRODUCT CARD
+       ========================================================= */
+
+    function createProductCard(product) {
+
+      return `
+        <article
+          class="product-card"
+          onclick="openProductModal('${product.id}')"
+        >
+
+          <div class="product-image-wrap">
+
+            <span class="product-tag">
+              ${product.tag}
+            </span>
+
+            <button
+              class="product-wishlist"
+              onclick="event.stopPropagation(); toggleWishlist('${product.id}')"
+              aria-label="Add ${product.name} to wishlist"
+            >
+              ♡
+            </button>
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              class="product-image"
+              loading="lazy"
+            />
+
+          </div>
+
+          <div class="product-info">
+
+            <div class="product-category">
+              ${product.category}
+            </div>
+
+            <h3 class="product-name">
+              ${product.name}
+            </h3>
+
+            <div class="product-bottom">
+
+              <span class="product-price">
+                ${formatNaira(product.price)}
+              </span>
+
+              <button
+                class="add-small"
+                onclick="event.stopPropagation(); openProductModal('${product.id}')"
+                aria-label="Add ${product.name} to bag"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+      `;
+
+    }
+
+
+    /* =========================================================
+       RENDER PRODUCTS
+       ========================================================= */
+
+    function renderProducts() {
+
+      const newProducts =
+        document.getElementById("newProducts");
+
+      const bestProducts =
+        document.getElementById("bestProducts");
+
+
+      newProducts.innerHTML =
+        products
+          .slice(0, 5)
+          .map(createProductCard)
+          .join("");
+
+
+      const bestSellerIds = ["003", "006", "007", "008"];
+
+      bestProducts.innerHTML =
+        bestSellerIds
+          .map(id => createProductCard(getProduct(id)))
+          .join("");
+
+    }
+
+
+    /* =========================================================
+       PRODUCT MODAL
+       ========================================================= */
+
+    function openProductModal(productId) {
+
+      selectedProduct = getProduct(productId);
+
+      if (!selectedProduct) return;
+
+      selectedQuantity = 1;
+      selectedSize = selectedProduct.sizes[0];
+
+      document.getElementById("modalProductImage").src =
+        selectedProduct.image;
+
+      document.getElementById("modalProductImage").alt =
+        selectedProduct.name;
+
+      document.getElementById("modalProductCategory").textContent =
+        selectedProduct.category;
+
+      document.getElementById("modalProductName").textContent =
+        selectedProduct.name;
+
+      document.getElementById("modalProductPrice").textContent =
+        formatNaira(selectedProduct.price);
+
+      document.getElementById("modalProductDescription").textContent =
+        selectedProduct.description;
+
+      document.getElementById("modalQty").textContent =
+        selectedQuantity;
+
+
+      renderSizeOptions();
+
+
+      document
+        .getElementById("productModalOverlay")
+        .classList.add("active");
+
+      document.body.classList.add("no-scroll");
+
+    }
+
+
+    function renderSizeOptions() {
+
+      const container =
+        document.getElementById("sizeOptions");
+
+      container.innerHTML =
+        selectedProduct.sizes
+          .map(size => `
+            <button
+              type="button"
+              class="size-option ${
+                size === selectedSize ? "selected" : ""
+              }"
+              onclick="selectSize('${size}')"
+            >
+              ${size}
+            </button>
+          `)
+          .join("");
+
+    }
+
+
+    function selectSize(size) {
+
+      selectedSize = size;
+
+      renderSizeOptions();
+
+    }
+
+
+    function closeProductModal() {
+
+      document
+        .getElementById("productModalOverlay")
+        .classList.remove("active");
+
+      document.body.classList.remove("no-scroll");
+
+    }
+
+
+    /* =========================================================
+       PRODUCT QUANTITY
+       ========================================================= */
+
+    document
+      .getElementById("modalQtyMinus")
+      .addEventListener("click", () => {
+
+        if (selectedQuantity > 1) {
+          selectedQuantity--;
+          document.getElementById("modalQty").textContent =
+            selectedQuantity;
+        }
+
+      });
+
+
+    document
+      .getElementById("modalQtyPlus")
+      .addEventListener("click", () => {
+
+        if (selectedQuantity < 20) {
+          selectedQuantity++;
+          document.getElementById("modalQty").textContent =
+            selectedQuantity;
+        }
+
+      });
+
+
+    /* =========================================================
+       ADD TO CART
+       ========================================================= */
+
+    document
+      .getElementById("modalAddButton")
+      .addEventListener("click", () => {
+
+        if (!selectedProduct) return;
+
+
+        const existingItem = cart.find(item =>
+          item.productId === selectedProduct.id &&
+          item.size === selectedSize
+        );
+
+
+        if (existingItem) {
+
+          existingItem.quantity += selectedQuantity;
+
+        } else {
+
+          cart.push({
+            productId: selectedProduct.id,
+            size: selectedSize,
+            quantity: selectedQuantity
+          });
+
+        }
+
+
+        saveCart();
+        updateCartUI();
+        closeProductModal();
+        openCart();
+
+        showToast("Added to your bag");
+
+      });
+
+
+    /* =========================================================
+       CART
+       ========================================================= */
+
+    function getCartQuantity() {
+
+      return cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+
+    }
+
+
+    function getCartTotal() {
+
+      return cart.reduce((total, item) => {
+
+        const product = getProduct(item.productId);
+
+        return total +
+          (product ? product.price * item.quantity : 0);
+
+      }, 0);
+
+    }
+
+
+    function updateCartUI() {
+
+      const count =
+        document.getElementById("cartCount");
+
+      count.textContent = getCartQuantity();
+
+
+      const cartContent =
+        document.getElementById("cartContent");
+
+      const cartFooter =
+        document.getElementById("cartFooter");
+
+
+      if (cart.length === 0) {
+
+        cartContent.innerHTML = `
+          <div class="sidebar-empty">
+
+            <div class="empty-icon">
+              👜
+            </div>
+
+            <h4>Your bag is empty</h4>
+
+            <p>
+              Discover something beautiful and add it
+              to your collection.
+            </p>
+
+          </div>
+        `;
+
+        cartFooter.innerHTML = "";
+
+        return;
+
+      }
+
+
+      cartContent.innerHTML =
+        cart.map((item, index) => {
+
+          const product = getProduct(item.productId);
+
+          if (!product) return "";
+
+
+          return `
+            <div class="cart-item">
+
+              <div class="cart-item-image">
+                <img
+                  src="${product.image}"
+                  alt="${product.name}"
+                />
+              </div>
+
+              <div class="cart-item-info">
+
+                <h4>
+                  ${product.name}
+                </h4>
+
+                <p>
+                  Size: ${item.size}
+                </p>
+
+                <div class="cart-item-price">
+                  ${formatNaira(product.price)}
+                </div>
+
+                <div class="cart-controls">
+
+                  <button
+                    class="qty-btn"
+                    onclick="changeCartQuantity(${index}, -1)"
+                  >
+                    −
+                  </button>
+
+                  <span class="qty-number">
+                    ${item.quantity}
+                  </span>
+
+                  <button
+                    class="qty-btn"
+                    onclick="changeCartQuantity(${index}, 1)"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+                <button
+                  class="remove-item"
+                  onclick="removeCartItem(${index})"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+              <div class="cart-item-total">
+                ${formatNaira(product.price * item.quantity)}
+              </div>
+
+            </div>
+          `;
+
+        }).join("");
+
+
+      cartFooter.innerHTML = `
+
+        <div class="summary-row">
+          <span>Items</span>
+          <span>${getCartQuantity()}</span>
+        </div>
+
+        <div class="summary-row total">
+          <span>Total</span>
+          <span>${formatNaira(getCartTotal())}</span>
+        </div>
+
+        <button
+          class="button button-primary checkout-button"
+          onclick="openCheckout()"
+        >
+          Checkout
+        </button>
+
+      `;
+
+    }
+
+
+    function changeCartQuantity(index, amount) {
+
+      if (!cart[index]) return;
+
+      cart[index].quantity += amount;
+
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+
+      saveCart();
+      updateCartUI();
+
+    }
+
+
+    function removeCartItem(index) {
+
+      if (!cart[index]) return;
+
+      cart.splice(index, 1);
+
+      saveCart();
+      updateCartUI();
+
+      showToast("Item removed");
+
+    }
+
+
+    /* =========================================================
+       CART SIDEBAR
+       ========================================================= */
+
+    function openCart() {
+
+      document
+        .getElementById("cartSidebar")
+        .classList.add("active");
+
+      document
+        .getElementById("overlay")
+        .classList.add("active");
+
+      document.body.classList.add("no-scroll");
+
+    }
+
+
+    function closeCart() {
+
+      document
+        .getElementById("cartSidebar")
+        .classList.remove("active");
+
+      document
+        .getElementById("overlay")
+        .classList.remove("active");
+
+      document.body.classList.remove("no-scroll");
+
+    }
+
+
+    document
+      .getElementById("cartButton")
+      .addEventListener("click", openCart);
+
+
+    document
+      .getElementById("cartClose")
+      .addEventListener("click", closeCart);
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    function openMobileMenu() {
+
+      document
+        .getElementById("mobileMenu")
+        .classList.add("active");
+
+      document
+        .getElementById("overlay")
+        .classList.add("active");
+
+      document.body.classList.add("no-scroll");
+
+    }
+
+
+    function closeMobileMenu() {
+
+      document
+        .getElementById("mobileMenu")
+        .classList.remove("active");
+
+      document
+        .getElementById("overlay")
+        .classList.remove("active");
+
+      document.body.classList.remove("no-scroll");
+
+    }
+
+
+    document
+      .getElementById("menuToggle")
+      .addEventListener("click", openMobileMenu);
+
+
+    document
+      .getElementById("mobileMenuClose")
+      .addEventListener("click", closeMobileMenu);
+
+
+    /* =========================================================
+       OVERLAY
+       ========================================================= */
+
+    document
+      .getElementById("overlay")
+      .addEventListener("click", () => {
+
+        closeCart();
+        closeMobileMenu();
+
+      });
+
+
+    /* =========================================================
+       CLOSE PRODUCT MODAL
+       ========================================================= */
+
+    document
+      .getElementById("productModalClose")
+      .addEventListener("click", closeProductModal);
+
+
+    document
+      .getElementById("productModalOverlay")
+      .addEventListener("click", event => {
+
+        if (
+          event.target ===
+          document.getElementById("productModalOverlay")
+        ) {
+          closeProductModal();
+        }
+
+      });
+
+
+    /* =========================================================
+       CHECKOUT
+       ========================================================= */
+
+    function openCheckout() {
+
+      if (cart.length === 0) {
+
+        showToast("Your bag is empty");
+
+        return;
+
+      }
+
+
+      renderCheckoutSummary();
+
+
+      document
+        .getElementById("checkoutModalOverlay")
+        .classList.add("active");
+
+      document.body.classList.add("no-scroll");
+
+
+      closeCart();
+
+    }
+
+
+    function closeCheckout() {
+
+      document
+        .getElementById("checkoutModalOverlay")
+        .classList.remove("active");
+
+      document.body.classList.remove("no-scroll");
+
+    }
+
+
+    document
+      .getElementById("checkoutModalClose")
+      .addEventListener("click", closeCheckout);
+
+
+    document
+      .getElementById("checkoutModalOverlay")
+      .addEventListener("click", event => {
+
+        if (
+          event.target ===
+          document.getElementById("checkoutModalOverlay")
+        ) {
+          closeCheckout();
+        }
+
+      });
+
+
+    /* =========================================================
+       CHECKOUT SUMMARY
+       ========================================================= */
+
+    function renderCheckoutSummary() {
+
+      const container =
+        document.getElementById("checkoutItems");
+
+      const total =
+        document.getElementById("checkoutTotal");
+
+
+      container.innerHTML =
+        cart.map(item => {
+
+          const product =
+            getProduct(item.productId);
+
+          if (!product) return "";
+
+
+          return `
+            <div class="checkout-item">
+
+              <div class="checkout-item-image">
+                <img
+                  src="${product.image}"
+                  alt="${product.name}"
+                />
+              </div>
+
+              <div>
+
+                <h4>
+                  ${product.name}
+                </h4>
+
+                <p>
+                  Size: ${item.size}<br />
+                  Quantity: ${item.quantity}
+                </p>
+
+              </div>
+
+              <div class="checkout-item-price">
+                ${formatNaira(product.price * item.quantity)}
+              </div>
+
+            </div>
+          `;
+
+        }).join("");
+
+
+      total.textContent =
+        formatNaira(getCartTotal());
+
+    }
+
+
+    /* =========================================================
+       WHATSAPP CHECKOUT
+       ========================================================= */
+
+    document
+      .getElementById("checkoutForm")
+      .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+
+        if (cart.length === 0) {
+
+          showToast("Your bag is empty");
+
+          return;
+
+        }
+
+
+        const name =
+          document
+            .getElementById("customerName")
+            .value
+            .trim();
+
+        const phone =
+          document
+            .getElementById("customerPhone")
+            .value
+            .trim();
+
+        const email =
+          document
+            .getElementById("customerEmail")
+            .value
+            .trim();
+
+        const address =
+          document
+            .getElementById("customerAddress")
+            .value
+            .trim();
+
+        const city =
+          document
+            .getElementById("customerCity")
+            .value
+            .trim();
+
+        const state =
+          document
+            .getElementById("customerState")
+            .value
+            .trim();
+
+        const note =
+          document
+            .getElementById("customerNote")
+            .value
+            .trim();
+
+
+        let message =
+`*NEW ABELLILO JEWELRY ORDER*
+
+*CUSTOMER DETAILS*
+Name: ${name}
+Phone: ${phone}
+Email: ${email || "Not provided"}
+
+*DELIVERY ADDRESS*
+${address}
+${city}, ${state}
+
+*ORDER DETAILS*
+`;
+
+
+        cart.forEach((item, index) => {
+
+          const product =
+            getProduct(item.productId);
+
+          if (!product) return;
+
+
+          message +=
+`
+${index + 1}. *${product.name}*
+Size: ${item.size}
+Quantity: ${item.quantity}
+Unit Price: ${formatNaira(product.price)}
+Subtotal: ${formatNaira(product.price * item.quantity)}
+`;
+
+        });
+
+
+        message +=
+`
+*ORDER TOTAL*
+${formatNaira(getCartTotal())}
+`;
+
+
+        if (note) {
+
+          message +=
+`
+*CUSTOMER NOTE*
+${note}
+`;
+
+        }
+
+
+        message +=
+`
+Thank you.
+Order submitted from the Abellilo Jewelry website.`;
+
+
+        const whatsappNumber =
+          "2348133463509";
+
+
+        const whatsappUrl =
+          "https://wa.me/" +
+          whatsappNumber +
+          "?text=" +
+          encodeURIComponent(message);
+
+
+        window.open(
+          whatsappUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
+
+
+        showToast(
+          "Your order details are ready in WhatsApp"
+        );
+
+      });
+
+
+    /* =========================================================
+       NEWSLETTER
+       ========================================================= */
+
+    document
+      .getElementById("newsletterForm")
+      .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const email =
+          document
+            .getElementById("newsletterEmail")
+            .value
+            .trim();
+
+        if (!email) return;
+
+        showToast(
+          "Thank you for joining the Abellilo list"
+        );
+
+        event.target.reset();
+
+      });
+
+
+    /* =========================================================
+       MOBILE NAV LINK BEHAVIOR
+       ========================================================= */
+
+    document
+      .querySelectorAll(".mobile-links a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+          closeMobileMenu();
+        });
+
+      });
+
+
+    /* =========================================================
+       ESC KEY
+       ========================================================= */
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key !== "Escape") return;
+
+      closeCart();
+      closeMobileMenu();
+      closeProductModal();
+      closeCheckout();
+
+    });
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    renderProducts();
+    updateCartUI();
+
+  </script>
+
+</body>
+</html>
